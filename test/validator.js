@@ -4,15 +4,21 @@ const Validator = require('../lib/validator');
 describe('Cheerio use htmlparser2', () => {
   it('should not return undefined', (done) => {
     const v = new Validator('test/test.html');
-    v.dom('h1').get(0).startIndex.should.be.type('number');
-    done();
+    v.then(
+      (t) => {
+        t.dom('h1').get(0).startIndex.should.be.type('number');
+        done();
+      },
+    );
   });
 });
 
 describe('validate h1', () => {
   it('should return 1', (done) => {
     const v = new Validator('test/test.html');
-    v.checkH1().should.equal(1);
-    done();
+    v.then((t) => {
+      t.checkH1().should.equal(1);
+      done();
+    });
   });
 });
