@@ -1,0 +1,82 @@
+[
+  {
+    "rule": "title",
+    "configs": {
+      "section": "head",
+      "tag": "title",
+      "action": {
+        "name": "must-have"
+      },
+      "descriptions": ""
+    } 
+  },
+  {
+    "rule": "meta description",
+    "configs": {
+      "section": "head",
+      "tag": "meta",
+      "attribute": "name",
+      "value": "descriptions",
+      "action": {
+        "name": "must-have"
+      },
+      "descriptions": ""
+    }
+  },
+  {
+    "rule": "meta keywords",
+    "configs": {
+      "section": "head",
+      "tag": "meta",
+      "attribute": "name",
+      "value": "keywords",
+      "descriptions": ""
+    }
+  },
+  {
+    "rule": "h1",  
+    "configs": {
+      "section": "body",
+      "tag": "h1",
+      "action": {
+        "name": "must-have"
+      },
+      "descriptions": ""
+    } 
+  },
+  {
+    "rule": "a",
+    "configs": {
+    "section": "body",
+      "tag": "a",
+      "attribute": "rel",
+      "action": {
+        "name": "must-have"
+      },
+    "descriptions": ""
+    }
+  },
+  {
+    "rule": "img",
+    "configs": {
+      "section": "body",
+      "tag": "img",
+      "attribute": "alt",
+      "action": {
+        "name": "must-have"
+      },
+      "descriptions": ""
+    }
+  },
+  {
+    "rule": "strong",
+    "configs": {
+      "section": "body",
+      "tag": "strong",
+      "action": {
+        "name": "limit",
+        "value": 15
+      }
+    }   
+  }
+]
