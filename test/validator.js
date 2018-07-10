@@ -44,3 +44,20 @@ describe('validate a', () => {
     });
   });
 });
+
+describe('validate strong', () => {
+  it('limit: 15, should return false', (done) => {
+    const v = new Validator('test/test.html');
+    v.then((t) => {
+      t.checkStrong().should.be.false();
+      done();
+    });
+  });
+  it('limit: 3, should return true', (done) => {
+    const v = new Validator('test/test.html');
+    v.then((t) => {
+      t.checkStrong(3).should.be.true();
+      done();
+    });
+  });
+});
