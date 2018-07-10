@@ -22,3 +22,14 @@ describe('validate h1', () => {
     });
   });
 });
+
+describe('validate img', () => {
+  it('should return an array with integers', (done) => {
+    const v = new Validator('test/test.html');
+    v.then((t) => {
+      const res = t.checkImg();
+      res.should.be.eql([7, 12]);
+      done();
+    });
+  });
+});
