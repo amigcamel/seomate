@@ -33,3 +33,14 @@ describe('validate img', () => {
     });
   });
 });
+
+describe('validate a', () => {
+  it('should return an array with integers', (done) => {
+    const v = new Validator('test/test.html');
+    v.then((t) => {
+      const res = t.checkA();
+      res.should.be.eql([14, 16]);
+      done();
+    });
+  });
+});
