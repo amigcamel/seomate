@@ -12,7 +12,8 @@ const seomate = (input, configPath) => {
 };
 
 // export seomate
-exports = module.exports = seomate;
+exports = module.exports = seomate; // eslint-disable-line no-multi-assign
+
 
 // Export the version
 exports.version = require('./package.json').version;
