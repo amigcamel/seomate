@@ -31,7 +31,7 @@ describe('Validate rules', () => {
       done();
     });
   });
-  it('should be lack of meta[name=keywords]', (done) => {
+  it('should have meta[name=keywords]', (done) => {
     v.then((t) => {
       const [bool, indicies] = t.check('meta keywords');
       bool.should.be.false();
