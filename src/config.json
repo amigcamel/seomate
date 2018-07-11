@@ -7,7 +7,7 @@
     },
     "descriptions":""
   },
-  "meta description":{
+  "meta descriptions":{
     "section":"head",
     "tag":"meta",
     "attribute":"name",
@@ -28,8 +28,7 @@
     "section":"body",
     "tag":"h1",
     "action":{
-      "name":"limit",
-      "value":1
+      "name":"must-have"
     },
     "descriptions":""
   },
