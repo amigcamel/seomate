@@ -13,43 +13,58 @@ describe('Cheerio use htmlparser2', () => {
   });
 });
 
-describe('validate h1', () => {
-  it('should return true', (done) => {
-    const v = new Validator('test/test.html');
+describe('Validate rules', () => {
+  const v = new Validator('test/test.html');
+  it('must have <title>', (done) => {
     v.then((t) => {
-      t.checkH1().should.be.true();
+      const [bool, indicies] = t.check('title');
+      bool.should.be.true();
+      indicies.should.be.an.Array().and.empty();
       done();
     });
   });
-});
-
-describe('validate img', () => {
-  it('should return an array with integers', (done) => {
-    const v = new Validator('test/test.html');
+  it('should have meta[name=descriptions]', (done) => {
     v.then((t) => {
-      const res = t.checkImg();
-      res.should.be.eql([7, 12]);
+      const [bool, indicies] = t.check('meta descriptions');
+      bool.should.be.true();
+      indicies.should.be.Array().and.empty();
       done();
     });
   });
-});
-
-describe('validate a', () => {
-  it('should return an array with integers', (done) => {
-    const v = new Validator('test/test.html');
+  // it('should be lack of meta[name=keywords]', (done) => {
+  //   v.then((t) => {
+  //     t.check('meta keywords').should
+  //   });
+  // });
+  it('sould have <h1>', (done) => {
     v.then((t) => {
-      const res = t.checkA();
-      res.should.be.eql([14, 16]);
+      const [bool, indicies] = t.check('h1');
+      bool.should.be.true();
+      indicies.should.be.an.Array().and.empty();
       done();
     });
   });
-});
-
-describe('validate strong', () => {
-  it('should return false', (done) => {
-    const v = new Validator('test/test.html');
+  it('<a> should have rel attribute', (done) => {
     v.then((t) => {
-      t.checkStrong().should.be.true();
+      const [bool, indicies] = t.check('a');
+      bool.should.be.false();
+      indicies.should.be.eql([15, 17]);
+      done();
+    });
+  });
+  it('<img> should have alt attribute', (done) => {
+    v.then((t) => {
+      const [bool, indicies] = t.check('img');
+      bool.should.be.false();
+      indicies.should.be.eql([8, 13]);
+      done();
+    });
+  });
+  it('<strong> should be no more than 15', (done) => {
+    v.then((t) => {
+      const [bool, indicies] = t.check('strong');
+      bool.should.be.true();
+      indicies.should.be.an.Array().and.empty();
       done();
     });
   });

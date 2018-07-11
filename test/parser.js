@@ -18,7 +18,7 @@ describe('check result correctness', () => {
   const string = fs.readFileSync('test/test.html', 'utf8');
   const dom = cheerio.load(string);
   it('limit with `section tag` should be true', (done) => {
-    const output = parser.check(
+    const [bool, indicies] = parser.check(
       {
         section: 'body',
         tag: 'img',
@@ -30,11 +30,12 @@ describe('check result correctness', () => {
       dom,
       string,
     );
-    output.should.be.false();
+    bool.should.be.false();
+    indicies.should.be.an.Array().and.empty();
     done();
   });
   it('must-have with `section tag` should return false', (done) => {
-    const output = parser.check(
+    const [bool, indicies] = parser.check(
       {
         section: 'body',
         tag: 'script',
@@ -45,11 +46,12 @@ describe('check result correctness', () => {
       dom,
       string,
     );
-    output.should.be.false();
+    bool.should.be.false();
+    indicies.should.be.an.Array().and.empty();
     done();
   });
   it('must-have with `section tag[attribute]` should return Array', (done) => {
-    const output = parser.check(
+    const [bool, indicies] = parser.check(
       {
         section: 'head',
         tag: 'meta',
@@ -61,7 +63,8 @@ describe('check result correctness', () => {
       dom,
       string,
     );
-    output.should.be.an.Array();
+    bool.should.be.true();
+    indicies.should.be.an.Array().and.empty();
     done();
   });
 });
