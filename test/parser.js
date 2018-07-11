@@ -126,3 +126,12 @@ describe('Validate rules', () => {
     done();
   });
 });
+
+describe('check apply', () => {
+  it('return should be an Array', (done) => {
+    Object.keys(p.configDict).forEach((rule) => {
+      p.apply(rule).should.be.an.Array();
+    });
+    done();
+  });
+});
