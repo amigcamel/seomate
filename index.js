@@ -2,13 +2,14 @@ const io = require('./lib/io');
 const parser = require('./lib/parser');
 
 const seomate = (input, configPath) => {
-  const p = new Promise((resolve) => {
+  const promise = new Promise((resolve) => {
     io.readFrom(input).then((string) => {
-      this.parser = new parser.Parser(string, configPath);
+      const p = new parser.Parser(string, configPath);
+      this.examine = (...rules) => p.apply(...rules);
       resolve(this);
     });
   });
-  return p;
+  return promise;
 };
 
 // export seomate
