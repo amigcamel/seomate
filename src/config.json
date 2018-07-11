@@ -4,8 +4,7 @@
     "tag":"title",
     "action":{
       "name":"must-have"
-    },
-    "descriptions":""
+    }
   },
   "meta descriptions":{
     "section":"head",
@@ -14,8 +13,7 @@
     "value":"descriptions",
     "action":{
       "name":"must-have"
-    },
-    "descriptions":""
+    }
   },
   "meta keywords":{
     "section":"head",
@@ -24,16 +22,14 @@
     "value":"keywords",
     "action":{
       "name":"must-have"
-    },
-    "descriptions":""
+    }
   },
   "h1":{
     "section":"body",
     "tag":"h1",
     "action":{
       "name":"must-have"
-    },
-    "descriptions":""
+    }
   },
   "a":{
     "section":"body",
@@ -41,8 +37,7 @@
     "attribute":"rel",
     "action":{
       "name":"must-have"
-    },
-    "descriptions":""
+    }
   },
   "img":{
     "section":"body",
@@ -50,8 +45,7 @@
     "attribute":"alt",
     "action":{
       "name":"must-have"
-    },
-    "descriptions":""
+    }
   },
   "strong":{
     "section":"body",
