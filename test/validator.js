@@ -31,11 +31,14 @@ describe('Validate rules', () => {
       done();
     });
   });
-  // it('should be lack of meta[name=keywords]', (done) => {
-  //   v.then((t) => {
-  //     t.check('meta keywords').should
-  //   });
-  // });
+  it('should be lack of meta[name=keywords]', (done) => {
+    v.then((t) => {
+      const [bool, indicies] = t.check('meta keywords');
+      bool.should.be.false();
+      indicies.should.be.an.Array().and.empty();
+      done();
+    });
+  });
   it('sould have <h1>', (done) => {
     v.then((t) => {
       const [bool, indicies] = t.check('h1');

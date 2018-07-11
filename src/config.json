@@ -22,6 +22,9 @@
     "tag":"meta",
     "attribute":"name",
     "value":"keywords",
+    "action":{
+      "name":"must-have"
+    },
     "descriptions":""
   },
   "h1":{
