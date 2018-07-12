@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "get-stream": "^3.0.0"
+    "get-stream": "^3.0.0",
+    "is-valid-path": "^0.1.1"
   }
 }

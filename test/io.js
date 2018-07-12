@@ -5,27 +5,28 @@ const path = require('path');
 const io = require('../lib/io.js');
 
 describe('Read from file', () => {
-  it('type should be string', (done) => {
-    io.readFrom('test/test.html').then(
-      (output) => {
-        (typeof output).should.be.type('string');
-        done();
-      },
-    );
+  const filePath = 'test/test.html';
+  const testString = '<html></html>';
+  const testStream = new stream.Readable();
+  it(`File content should be identical to that of ${filePath}`, (done) => {
+    io.readFrom(filePath).then((output) => {
+      output.should.be.equal(fs.readFileSync(filePath, 'utf8'));
+      done();
+    });
   });
-});
-
-describe('Read from stream', () => {
-  it('type should be string', (done) => {
-    const s = new stream.Readable();
-    s.push('<html></html>');
-    s.push(null);
-    io.readFrom(s).then(
-      (output) => {
-        (typeof output).should.be.type('string');
-        done();
-      },
-    );
+  it(`String content should be identical to '${testString}'`, (done) => {
+    io.readFrom(testString).then((output) => {
+      output.should.be.equal(testString);
+      done();
+    });
+  });
+  it(`Stream content should be identical to '${testString}'`, (done) => {
+    testStream.push(testString);
+    testStream.push(null);
+    io.readFrom(testStream).then((output) => {
+      output.should.be.equal(testString);
+      done();
+    });
   });
 });
 
