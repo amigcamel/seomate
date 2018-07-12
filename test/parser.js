@@ -5,6 +5,7 @@ const rewire = require('rewire');
 const should = require('should');
 
 const parser = rewire('../lib/parser.js');
+const getConfigDict = parser.__get__('getConfigDict'); // eslint-disable-line no-underscore-dangle
 const p = new parser.Parser(fs.readFileSync('test/test.html', 'utf8'));
 
 describe('Cheerio use htmlparser2', () => {
@@ -15,7 +16,7 @@ describe('Cheerio use htmlparser2', () => {
 });
 
 describe('Validate configDict', () => {
-  const configDict = parser.getConfigDict();
+  const configDict = getConfigDict();
   it('"configDict" should be Object', (done) => {
     configDict.should.be.an.Object();
     done();
@@ -25,7 +26,7 @@ describe('Validate configDict', () => {
     done();
   });
   it('Config with invalid rule should throw Error', (done) => {
-    should(() => { parser.getConfigDict('test/config1.json'); }).throw('Invalid rule: unknown');
+    should(() => { getConfigDict('test/config1.json'); }).throw('Invalid rule: unknown');
     done();
   });
 });
@@ -81,7 +82,7 @@ describe('check result correctness', () => {
 });
 
 describe('Validate rules', () => {
-  const configDict = parser.getConfigDict();
+  const configDict = getConfigDict();
   const string = fs.readFileSync('test/test.html', 'utf8');
   const dom = cheerio.load(
     string,
