@@ -51,7 +51,7 @@
     "section":"body",
     "tag":"strong",
     "action":{
-      "name":"limit",
+      "name":"no-more-than",
       "value":15
     }
   }

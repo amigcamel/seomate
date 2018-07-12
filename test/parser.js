@@ -26,13 +26,13 @@ describe('Validate configDict', () => {
 });
 
 describe('check result correctness', () => {
-  it('limit with `section tag` should be true', (done) => {
+  it('no-more-than with `section tag` should be true', (done) => {
     const [bool, indicies, configs] = p.check(
       {
         section: 'body',
         tag: 'img',
         action: {
-          name: 'limit',
+          name: 'no-more-than',
           value: 1,
         },
       },
