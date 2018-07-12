@@ -8,8 +8,7 @@ An NPM module providing dead simple way to check your HTML defects.
 
 ### Prerequisites
 
-    nodejs 10+
-    npm 6+
+    nodejs 8+
 
 ### Installation
 
