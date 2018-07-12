@@ -2,6 +2,10 @@
   "name": "seomate",
   "version": "0.0.1",
   "description": "An NPM module providing dead simple way to check your HTML defects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amigcamel/seomate"
+  },
   "main": "index.js",
   "scripts": {
     "test": "mocha || true"
