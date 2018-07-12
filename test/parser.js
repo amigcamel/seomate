@@ -1,7 +1,9 @@
 const fs = require('fs');
+const stream = require('stream');
 const cheerio = require('cheerio');
-const parser = require('../lib/parser');
+const rewire = require('rewire');
 
+const parser = rewire('../lib/parser.js');
 const p = new parser.Parser(fs.readFileSync('test/test.html', 'utf8'));
 
 describe('Cheerio use htmlparser2', () => {
@@ -132,6 +134,26 @@ describe('check apply', () => {
     Object.keys(p.configDict).forEach((rule) => {
       p.apply(rule).should.be.an.Array();
     });
+    done();
+  });
+});
+
+describe('Validate Messages', () => {
+  const Messages = parser.__get__('Messages'); // eslint-disable-line no-underscore-dangle
+  const messages = new Messages();
+  messages.push('test1', 'test2', 'test3');
+  it('should be instance of Array', (done) => {
+    messages.should.be.an.instanceof(Array);
+    done();
+  });
+  it('toString should return string', (done) => {
+    const output = messages.toString();
+    output.should.be.String().and.equal('test1\ntest2\ntest3');
+    done();
+  });
+  it('toStream should be instance of stream.Writable', (done) => {
+    const output = messages.toStream();
+    output.should.be.instanceof(stream.Writable);
     done();
   });
 });
