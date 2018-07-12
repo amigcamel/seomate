@@ -1,4 +1,4 @@
-const should = require('should'); // eslint-disable-line no-unused-vars
+require('should');
 const f = require('../index');
 
 describe('type should be function', () => {
