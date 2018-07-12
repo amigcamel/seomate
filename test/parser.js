@@ -16,6 +16,18 @@ describe('Cheerio use htmlparser2', () => {
   });
 });
 
+describe('Test getConfigDict', () => {
+  it('getConfigDict() result should be identical to src/config.json', (done) => {
+    getConfigDict().should.be.eql(JSON.parse(fs.readFileSync('src/config.json')));
+    done();
+  });
+
+  it('getConfigDict(\'test/config.json\') result should be identical to test/config.json', (done) => {
+    getConfigDict('test/config.json').should.be.eql(JSON.parse(fs.readFileSync('test/config.json')));
+    done();
+  });
+});
+
 describe('Validate configDict', () => {
   const configDict = getConfigDict();
   it('"configDict" should be Object', (done) => {
