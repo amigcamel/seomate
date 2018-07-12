@@ -3,6 +3,7 @@ const stream = require('stream');
 const cheerio = require('cheerio');
 const rewire = require('rewire');
 const should = require('should');
+const sinon = require('sinon');
 
 const parser = rewire('../lib/parser.js');
 const getConfigDict = parser.__get__('getConfigDict'); // eslint-disable-line no-underscore-dangle
@@ -148,18 +149,30 @@ describe('Validate Messages', () => {
   const Messages = parser.__get__('Messages'); // eslint-disable-line no-underscore-dangle
   const messages = new Messages();
   messages.push('test1', 'test2', 'test3');
+  const expectedOutput = 'test1\ntest2\ntest3';
+  beforeEach(() => {
+    sinon.spy(console, 'log');
+  });
+  afterEach(() => {
+    console.log.restore();
+  });
   it('should be instance of Array', (done) => {
     messages.should.be.an.instanceof(Array);
     done();
   });
   it('toString should return string', (done) => {
     const output = messages.toString();
-    output.should.be.String().and.equal('test1\ntest2\ntest3');
+    output.should.be.String().and.equal(expectedOutput);
     done();
   });
   it('toStream should be instance of stream.Writable', (done) => {
     const output = messages.toStream();
     output.should.be.instanceof(stream.Writable);
+    done();
+  });
+  it(`toConsole output should be identical to "${expectedOutput}"`, (done) => {
+    messages.toConsole();
+    console.log.calledWith(expectedOutput).should.be.true();
     done();
   });
 });

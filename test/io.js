@@ -2,6 +2,7 @@ const stream = require('stream');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const sinon = require('sinon');
 const io = require('../lib/io.js');
 
 describe('Read from file', () => {
@@ -31,6 +32,14 @@ describe('Read from file', () => {
 });
 
 describe('Test for writeTo', () => {
+  const messages = ['test1', 'test2', 'test3'];
+  const expectedOutput = 'test1\ntest2\ntest3';
+  beforeEach(() => {
+    sinon.spy(console, 'log');
+  });
+  afterEach(() => {
+    console.log.restore();
+  });
   it('should write to $HOME/seomate.log', (done) => {
     const fp = path.join(os.homedir(), 'seomate.log');
     io.writeTo([], 'file');
@@ -59,6 +68,11 @@ describe('Test for writeTo', () => {
   });
   it('output should be instance of stream.Writable', (done) => {
     io.writeTo([], 'stream').should.be.instanceof(stream.Writable);
+    done();
+  });
+  it(`console.log output should be ${expectedOutput}`, (done) => {
+    io.writeTo(messages, 'console');
+    console.log.calledWith(expectedOutput).should.be.true();
     done();
   });
 });
