@@ -11,7 +11,7 @@ An NPM module providing dead simple way to check your HTML defects.
 
 ### Installation
 
-    npm install amigcamel/seomate
+    npm install seomate
 
 ### Usage
 
