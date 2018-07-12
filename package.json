@@ -1,10 +1,10 @@
 {
   "name": "seomate",
   "version": "0.0.1",
-  "description": "Yet another SEO checker",
+  "description": "An NPM module providing dead simple way to check your HTML defects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha || true"
   },
   "keywords": [
     "SEO"
