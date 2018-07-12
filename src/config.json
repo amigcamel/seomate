@@ -36,7 +36,7 @@
     "tag":"a",
     "attribute":"rel",
     "action":{
-      "name":"must-have"
+      "name":"must-have-attr"
     }
   },
   "img":{
@@ -44,7 +44,7 @@
     "tag":"img",
     "attribute":"alt",
     "action":{
-      "name":"must-have"
+      "name":"must-have-attr"
     }
   },
   "strong":{
@@ -55,4 +55,4 @@
       "value":15
     }
   }
- }
+}
