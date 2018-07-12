@@ -2,6 +2,7 @@ const fs = require('fs');
 const stream = require('stream');
 const cheerio = require('cheerio');
 const rewire = require('rewire');
+const should = require('should');
 
 const parser = rewire('../lib/parser.js');
 const p = new parser.Parser(fs.readFileSync('test/test.html', 'utf8'));
@@ -15,12 +16,16 @@ describe('Cheerio use htmlparser2', () => {
 
 describe('Validate configDict', () => {
   const configDict = parser.getConfigDict();
-  it('should be Object', (done) => {
+  it('"configDict" should be Object', (done) => {
     configDict.should.be.an.Object();
     done();
   });
-  it('value should be Object', (done) => {
+  it('Value should be Object', (done) => {
     configDict.should.be.an.Object();
+    done();
+  });
+  it('Config with invalid rule should throw Error', (done) => {
+    should(() => { parser.getConfigDict('test/config1.json'); }).throw('Invalid rule: unknown');
     done();
   });
 });
