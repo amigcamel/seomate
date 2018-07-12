@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/amigcamel/seomate.svg?branch=develop)](https://travis-ci.org/amigcamel/seomate)
+[![Build Status](https://travis-ci.org/amigcamel/seomate.svg?branch=master)](https://travis-ci.org/amigcamel/seomate)
 [![npm version](https://badge.fury.io/js/seomate.svg)](https://www.npmjs.com/seomate)
 # SEOMATE
 
