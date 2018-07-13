@@ -2,6 +2,7 @@ const stream = require('stream');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const should = require('should');
 const sinon = require('sinon');
 const io = require('../lib/io.js');
 
@@ -9,6 +10,10 @@ describe('Read from file', () => {
   const filePath = 'test/test.html';
   const testString = '<html></html>';
   const testStream = new stream.Readable();
+  it('input should not be undefined', (done) => {
+    should(() => { io.readFrom().catch((e) => { console.log(e); }); }).throw('Input should not be undefined');
+    done();
+  });
   it(`File content should be identical to that of ${filePath}`, (done) => {
     io.readFrom(filePath).then((output) => {
       output.should.be.equal(fs.readFileSync(filePath, 'utf8'));
