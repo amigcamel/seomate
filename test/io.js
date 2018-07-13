@@ -10,8 +10,8 @@ describe('Read from file', () => {
   const filePath = 'test/test.html';
   const testString = '<html></html>';
   const testStream = new stream.Readable();
-  it('input should not be undefined', (done) => {
-    should(() => { io.readFrom().catch((e) => { console.log(e); }); }).throw('Input should not be undefined');
+  it('input should not be empty', (done) => {
+    should(() => { io.readFrom().catch((e) => { console.log(e); }); }).throw('Input should not be empty');
     done();
   });
   it(`File content should be identical to that of ${filePath}`, (done) => {
