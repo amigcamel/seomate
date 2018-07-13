@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/amigcamel/seomate.svg?branch=develop)](https://travis-ci.org/amigcamel/seomate)
 [![npm version](https://badge.fury.io/js/seomate.svg)](https://www.npmjs.com/seomate)
+[![Coverage Status](https://coveralls.io/repos/github/amigcamel/seomate/badge.svg?branch=develop)](https://coveralls.io/github/amigcamel/seomate?branch=develop)
 # SEOMATE
 
 An NPM module providing dead simple way to check your HTML defects.
