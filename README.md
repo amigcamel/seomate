@@ -13,13 +13,31 @@ An NPM module providing dead simple way to check your HTML defects.
 
 ### Prerequisites
 
-    nodejs 8+
+    Node.js 8+
 
 ### Installation
 
     npm install seomate
 
 ### Usage
+
+#### Command line:
+
+    Usage: seomate [options] <filepath>
+
+    Options:
+
+    -V, --version                    output the version number
+    -c, --config-path [config path]  configs file path
+    -r, --rules [rules]              rules to be applied (separated by comma)
+    -o, --output [file path]         write to file
+    -h, --help                       output usage information
+    
+Examples:
+
+    seomate index.html -c configs.json -r title,h1 -o /tmp/seomate.log
+
+API:
 
     const = seomate require('seomate');
     seomate('your/file/path').then((t) => {
@@ -28,11 +46,19 @@ An NPM module providing dead simple way to check your HTML defects.
         console.log(e);
     });
 
-### Test
+## Development Setup
 
     git clone https://github.com/amigcamel/seomate
     cd seomate
-    npm install -g mocha
     npm install
+
+### Test
+
     mocha
 
+## Release History
+
+* 0.0.2
+    * add cli
+* 0.0.1
+    * First release
