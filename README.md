@@ -1,8 +1,8 @@
 <img align="right" width="200px" src="https://raw.githubusercontent.com/amigcamel/logo/4f465fe1/seomate.png">
 
-[![Build Status](https://travis-ci.org/amigcamel/seomate.svg?branch=develop)](https://travis-ci.org/amigcamel/seomate)
+[![Build Status](https://travis-ci.org/amigcamel/seomate.svg?branch=master)](https://travis-ci.org/amigcamel/seomate)
 [![npm version](https://badge.fury.io/js/seomate.svg)](https://www.npmjs.com/seomate)
-[![Coverage Status](https://coveralls.io/repos/github/amigcamel/seomate/badge.svg?branch=develop)](https://coveralls.io/github/amigcamel/seomate?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/amigcamel/seomate/badge.svg?branch=master)](https://coveralls.io/github/amigcamel/seomate?branch=master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # SEOMATE
 
