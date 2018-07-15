@@ -1,0 +1,11 @@
+{
+  "meta-robots":{
+    "section":"head",
+    "tag":"meta",
+    "attribute":"name",
+    "value":"robots",
+    "action":{
+      "name":"must-have"
+    }
+  }
+}

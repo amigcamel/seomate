@@ -1,10 +1,13 @@
+// Test for lib/parser.js
 const fs = require('fs');
 const stream = require('stream');
 const cheerio = require('cheerio');
 const rewire = require('rewire');
 const should = require('should');
+const sinon = require('sinon');
 
 const parser = rewire('../lib/parser.js');
+const getConfigDict = parser.__get__('getConfigDict'); // eslint-disable-line no-underscore-dangle
 const p = new parser.Parser(fs.readFileSync('test/test.html', 'utf8'));
 
 describe('Cheerio use htmlparser2', () => {
@@ -14,8 +17,20 @@ describe('Cheerio use htmlparser2', () => {
   });
 });
 
+describe('Test getConfigDict', () => {
+  it('getConfigDict() result should be identical to src/config.json', (done) => {
+    getConfigDict().should.be.eql(JSON.parse(fs.readFileSync('src/config.json')));
+    done();
+  });
+
+  it('getConfigDict(\'test/config.json\') result should be identical to test/config.json', (done) => {
+    getConfigDict('test/config.json').should.be.eql(JSON.parse(fs.readFileSync('test/config.json')));
+    done();
+  });
+});
+
 describe('Validate configDict', () => {
-  const configDict = parser.getConfigDict();
+  const configDict = getConfigDict();
   it('"configDict" should be Object', (done) => {
     configDict.should.be.an.Object();
     done();
@@ -25,7 +40,7 @@ describe('Validate configDict', () => {
     done();
   });
   it('Config with invalid rule should throw Error', (done) => {
-    should(() => { parser.getConfigDict('test/config1.json'); }).throw('Invalid rule: unknown');
+    should(() => { getConfigDict('test/config1.json'); }).throw('Invalid rule: unknown');
     done();
   });
 });
@@ -81,7 +96,7 @@ describe('check result correctness', () => {
 });
 
 describe('Validate rules', () => {
-  const configDict = parser.getConfigDict();
+  const configDict = getConfigDict();
   const string = fs.readFileSync('test/test.html', 'utf8');
   const dom = cheerio.load(
     string,
@@ -147,18 +162,30 @@ describe('Validate Messages', () => {
   const Messages = parser.__get__('Messages'); // eslint-disable-line no-underscore-dangle
   const messages = new Messages();
   messages.push('test1', 'test2', 'test3');
+  const expectedOutput = 'test1\ntest2\ntest3';
+  beforeEach(() => {
+    sinon.spy(console, 'log');
+  });
+  afterEach(() => {
+    console.log.restore();
+  });
   it('should be instance of Array', (done) => {
     messages.should.be.an.instanceof(Array);
     done();
   });
   it('toString should return string', (done) => {
     const output = messages.toString();
-    output.should.be.String().and.equal('test1\ntest2\ntest3');
+    output.should.be.String().and.equal(expectedOutput);
     done();
   });
   it('toStream should be instance of stream.Writable', (done) => {
     const output = messages.toStream();
     output.should.be.instanceof(stream.Writable);
+    done();
+  });
+  it(`toConsole output should be identical to "${expectedOutput}"`, (done) => {
+    messages.toConsole();
+    console.log.calledWith(expectedOutput).should.be.true();
     done();
   });
 });
