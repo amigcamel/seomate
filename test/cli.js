@@ -1,3 +1,4 @@
+// Test for lib/cli.js
 const { spawn } = require('child_process');
 
 describe('Test for cli', () => {

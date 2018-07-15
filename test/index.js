@@ -1,3 +1,4 @@
+// Test for index.js
 const seomate = require('../index');
 
 describe('Test seomate', () => {
