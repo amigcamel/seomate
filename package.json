@@ -1,6 +1,6 @@
 {
   "name": "seomate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An NPM module providing dead simple way to check your HTML defects",
   "repository": {
     "type": "git",
