@@ -169,7 +169,7 @@ So, every field is dependant with its upper level.
 ##### `section`
 
 `head` or `body`.  
-This should be sepcified to avoi cases like the following:
+This should be sepcified to avoid cases like the following:
 	
     <html>
       <head></head>
@@ -202,7 +202,7 @@ An HTML tag.
 ##### `attribute`
 
 A tag attribute.
-If `tag` is not set, `value` will be ignored.
+If `tag` is not set, `attribute` will be ignored.
 
 ##### `value`
 
@@ -213,7 +213,7 @@ If `attribute` is not set, `value` will be ignored.
 
 ##### `must-have`
 
-A HTML should have the provided pattern.
+A HTML must have the provided pattern.
 
 Example 1:
 
@@ -263,7 +263,7 @@ This rule can be read as "This HTML must have `<meta>` with attribute `name` who
 
 ##### `must-have-attribute`
 
-A provided pattern should always have a specified attribute.
+A provided pattern must have a specified attribute.
 
 For example:
 
