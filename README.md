@@ -43,11 +43,67 @@ Example 2: Check an HTML file with customized configurations and rules and write
 
 #### API:
 
-    const = seomate require('seomate');
-    seomate('your/file/path', 'your/config.json').then((t) => {
-        t.examine('rule1', 'rule2', 'rule3').toFile('/tmp/seomate.log');
-    }).catch((e) => {
-        console.log(e);
+Import `seomate` module:
+
+    const seomate = require('seomate');
+
+
+##### Reading
+
+Provide an HTML file:
+
+    const p = seomate('your/html/path');
+
+Or you can provide a raw HTML string directly:
+
+    const p = seomate('<html><head>...</head><body>...</body></html>')
+
+`seomate` also accepts reading from a readable stream:
+
+    const p = seomate(<a readable stream>);
+
+Provide your customized `configDict` (if not set, use the default one)
+
+    const p = seomate('your/html/path', 'your/config.json')
+
+##### Parsing
+
+Show SEO defects with rules:
+
+    p.then((t) => {
+        t.examine('rule1', 'rule2', 'rule3');
+    });
+
+If rules are not specified, all rules in `configDict` will be applied:
+
+    p.then((t) => {
+        t.examine();
+    });
+
+##### Writing
+
+Write output to standard output:
+
+    p.then((t) => {
+        t.examine().toConsole();
+    });
+
+Write output to writable stream:
+
+    p.then((t) => {
+        t.examine().toStream();
+    });
+
+Write output to file:
+
+    p.then((t) => {
+        t.examine().toFile('your/output/path');
+    });
+
+If output path is not set, the file will be write to `$HOME/seomate.log`:
+
+    p.then((t) => {
+        t.examine().toFile('your/output/path');
     });
 
 ## Development Setup
