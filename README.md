@@ -74,18 +74,18 @@ Example 2: Check an HTML file with customized configurations and rules and write
 #### Format
 `configDict` is configured in `JSON` format. A complete template is shown as the following:
 
-	{
-		"rule-name": {
-			"section": "",
-			"tag": "",
-			"attribute": "",
-			"value": "",
-			"action": {
-				"name": "",
-				"value": ""
-			}
-		}
-	}
+    {
+		  "rule-name": {
+			  "section": "",
+			  "tag": "",
+			  "attribute": "",
+			  "value": "",
+			  "action": {
+	  			"name": "",
+		  		"value": ""
+  			}
+	    }
+    }
 	
 Here are the basic definitions:
 
@@ -125,12 +125,12 @@ This should be sepcified to avoi cases like the following:
 This HTML has the `<title>` in the `<body>` section, which is still valid but not standard. So, if we configure `configDict` as this:
 
     {
-    	"title-rule": {
-    		"section": "head",
-    		"tag": "tag",
-    		"action": {
-    			"name": "must-have"
-    		}
+      "title-rule": {
+    	  "section": "head",
+    	  "tag": "tag",
+    	  "action": {
+    		  "name": "must-have"
+    	  }
     	}
     }
 
@@ -161,46 +161,46 @@ A HTML should have the provided pattern.
 
 Example 1:
 
-	{
-		"title-rule": {
-			"section": "head",
-			"tag": "title",
-			"action": {
-				"name": "must-have"
-			}
-		}
-	}
+  	{
+	  	"title-rule": {
+		  	"section": "head",
+			  "tag": "title",
+			  "action": {
+				  "name": "must-have"
+			  }
+		  }
+	  }
 
 This rule can be read as "This HTML must have `<title>`."  
 
 Example 2:
 
-	{
-		"img-rule": {
-			"section": "head",
-			"tag": "body",
-			"attribute": "alt",
-			"action": {
-				"name": "must-have"
-			}
-		}
-	}
+	  {
+		  "img-rule": {
+			  "section": "head",
+			  "tag": "body",
+			  "attribute": "alt",
+			  "action": {
+				  "name": "must-have"
+			  }
+		  }
+	  }
 
 This rule can be read as "This HTML must have `<img>` with attribute `alt`."
 
 Example 3:
 
-	{
-		"meta-robots-rule": {
-			"section": "head",
-			"tag": "meta",
-			"attribute": "name",
-			"value": "robots",
-			"action": {
-				"name": "must-have"
-			}
-		}
-	}
+  	{
+	  	"meta-robots-rule": {
+		  	"section": "head",
+			  "tag": "meta",
+			  "attribute": "name",
+			  "value": "robots",
+			  "action": {
+				  "name": "must-have"
+			  }
+		  }
+	  }
 	
 This rule can be read as "This HTML must have `<meta>` with attribute `name` whose value is `robots`, e.g., `<meta name='robots'>`"
 
@@ -211,16 +211,16 @@ A provided pattern should always have a specified attribute.
 
 For example:
 
-	{
-		"a-rule": {
-			"section": "body",
-			"tag": "a",
-			"attribute": "rel"
-		},
-		"action": {
-			"name": "must-have-attr"
-		}
-	}
+	  {
+		  "a-rule": {
+			  "section": "body",
+			  "tag": "a",
+			  "attribute": "rel",
+		    "action": {
+  			  "name": "must-have-attr"
+	  	  }
+      }
+	  }
 
 This rule can be read as "`<a>`, if exists, must have attribute `rel`." If `<a>` is found with no `rel` attribute, line numbers will be provide for the ease of debugging.
 
