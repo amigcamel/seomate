@@ -33,15 +33,19 @@ An NPM module providing dead simple way to check your HTML defects.
     -o, --output [file path]         write to file
     -h, --help                       output usage information
     
-Example:
+Example 1: Check an HTML file with default configurations and rules and print ouput to standard output
 
-    seomate index.html -c configs.json -r title,h1 -o /tmp/seomate.log
+    seomate your.html
 
-API:
+Example 2: Check an HTML file with customized configurations and rules and write output to centain path
+
+    seomate your/file/path -c your/configs.json -r rule1,rule2,rule3 -o /tmp/seomate.log
+
+#### API:
 
     const = seomate require('seomate');
-    seomate('your/file/path').then((t) => {
-        t.examine('rule1', 'rule2', 'rule3').toConsole();
+    seomate('your/file/path', 'your/config.json').then((t) => {
+        t.examine('rule1', 'rule2', 'rule3').toFile('/tmp/seomate.log');
     }).catch((e) => {
         console.log(e);
     });
