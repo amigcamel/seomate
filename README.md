@@ -155,6 +155,7 @@ Here are the basic definitions:
 		+ `must-have`
 		+ `must-have-attribute`
 		+ `nore-more-than`
+        + `value`: value of `name` (currently only in use with `no-more-than`)
 
 
 #### Fields
@@ -209,7 +210,10 @@ If `tag` is not set, `attribute` will be ignored.
 An attribute value of a tag.
 If `attribute` is not set, `value` will be ignored.
 
-#### Rules
+#### action
+
+Expected behavior of the HTML parser.
+
 
 ##### `must-have`
 
